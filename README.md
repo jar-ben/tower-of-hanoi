@@ -27,3 +27,4 @@ The tool implements two algorithms for computing the movement instructions; a re
 ## Copyright Note
 This (toy) tool has been developed by Jaroslav Bendik and it is distributed under the GPL-3.0 License (see the LICENSE file).
 
+The tool is publicly available on github: https://github.com/jar-ben/tower-of-hanoi
