@@ -38,15 +38,20 @@ class TOH:
         """The basic recursive algorithm for the Tower of Hanoi. Due to the recursion,
         the computation is not as efficient as an iterative one. Especially, if the
         (recursion) stack limit is very low. However, on the other hand, the recursive
-        version should be easier to understand for the reader.
+        version should be easier to understand for the reader. The output of the method is
+        a list of instructions/steps, where every instruction is a pair (s,t) denoting a
+        move of a disk form the rod s to the rod t.
         """
         if n == 0:
             return []
         elif n == 1:
             return [(source, target)]
         else:
+            # move all but the largest (bottom) disk to the aux rod
             instructions = self.compute_recursive(n-1, source, target, aux)
+            # move the largest disk to the target rod
             instructions += [(source, target)]
+            # move all disks from the aux rod to the target rod
             instructions += self.compute_recursive(n-1, aux, source, target)
             return instructions
 
