@@ -60,15 +60,18 @@ class TOH:
         is more efficient than the recursive version (compute_recursive), however,
         it might be harder to understand.
         """
+        instructions = []
+
+        # sets up "virtual" rods (lists)
         if self.n % 2 == 0:
             aux, target = target, aux
         rods = {}
         rods[source] = [i for i in range(self.n, 0, -1)]
         rods[aux] = []
         rods[target] = []
-        instructions = []
 
         def move_between(rodA, rodB):
+            """Move a disk between rodA and rodB. There is only one valid move"""
             if len(rods[rodA]) == 0:
                 rods[rodA].append(rods[rodB].pop())
                 return (rodB, rodA)
@@ -82,6 +85,8 @@ class TOH:
                 rods[rodA].append(rods[rodB].pop())
                 return (rodB, rodA)
 
+        # to move all the disks, we need to perform 2^n - 1 steps
+        # basically, we perform the same steps/moves as we would perform with the recursive solution
         for i in range(1, pow(2, self.n)):
             if i % 3 == 1:
                 instructions.append(move_between(source, target))
