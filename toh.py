@@ -4,7 +4,7 @@ class TOH:
     """A class for computing and printing instructions on solving the Tower of Hanoi problem"""
 
     def __init__(self, n, sourceRod="rod1", auxRod="rod2", targetRod="rod3"):
-        self.n = n
+        self.n = n # the number of disks
         self.rodNames = {1 : sourceRod, 2 : auxRod, 3 : targetRod}
         self.algorithm = "recursive"
         self.instructions = []
@@ -149,5 +149,6 @@ if __name__ == "__main__":
         print("Please specify a positive number of disks.")
     else:
         toh = TOH(args.num_of_disks, args.source, args.aux, args.target)
+        toh.setAlgorithm(args.algorithm)
         toh.compute_instructions()
         toh.print_instructions()
